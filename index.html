@@ -4,11 +4,12 @@
 	<title>Apply</title>
 	<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
 </head>
 <body>
 	<div class="callout large">
 		<div class="form">
-<form action="" class="pure-form pure-form-aligned center-block">
+<form action="" class="pure-form pure-form-aligned center-block" id="apply">
                       <fieldset>
                       <div class="pure-g">
                         <div class="pure-u-1 pure-u-md-1">
@@ -75,5 +76,29 @@
                   </form>
 		</div>
 	</div>
+
+<script>
+$(document).ready(function(){
+    var from,to,subject,text;
+    $("#send_email").click(function(){      
+        to=$("#to").val();
+        subject=$("#subject").val();
+        text=$("#content").val();
+        $("#message").text("Sending E-mail...Please wait");
+        $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+        if(data=="sent")
+        {
+            $("#message").empty().html("
+
+Email is been sent at "+to+" . Please check inbox !
+
+");
+        }
+
+});
+    });
+});
+</script>
+
 </body>
 </html>
