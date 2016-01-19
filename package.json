@@ -2,6 +2,7 @@
 "name": "email-server",
 "version": "1.0.0",
 "dependencies": {
+"sendgrid": "^1.9.2",
 "nodemailer": "~0.7.1",
 "express": "~4.5.1"
 }
